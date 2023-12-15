@@ -10,7 +10,18 @@ class GoogleHomePage:
         self.browser_interactions.open_page(url)
 
     def fill_search_field(self, text: str):
-        pass
+        return self.browser_interactions.input_text(locators.SEARCH_BAR, text)
 
     def click_search(self):
         self.browser_interactions.click_element(locators.SEARCH_BUTTON)
+
+    def search_for(self, text2search: str):
+        if self.fill_search_field(text2search):
+            self.click_search()
+            return True
+
+        else:
+            return False
+
+
+

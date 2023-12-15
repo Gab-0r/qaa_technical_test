@@ -26,3 +26,24 @@ class BrowserInteractions:
             EC.element_to_be_clickable(get_locator(raw_locator))
         )
         element.click()
+
+    def input_text(self, raw_locator: tuple, text: str) -> bool:
+        try:
+            element = WebDriverWait(self._driver, self.time_out).until(EC.visibility_of_element_located(
+                get_locator(raw_locator)
+            ))
+        except:
+            return False
+        else:
+            element.send_keys(text)
+            return True
+
+    def get_elements(self, raw_locator: tuple) -> list[WebElement]:
+        try:
+            WebDriverWait(self._driver, self.time_out).until(
+                EC.presence_of_all_elements_located(get_locator(raw_locator))
+            )
+        except:
+            return []
+        else:
+            return self._driver.find_elements(*get_locator(raw_locator))
