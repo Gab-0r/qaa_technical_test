@@ -11,7 +11,7 @@ Feature: User can login
     And The correct login message displayed is the expected
 
   @scenario3.1
-  Scenario Outline: The user logins with bad username <username>
+  Scenario Outline: The user logins with invalid username <username>
     Given The user is on the login page
     When The user enters a invalid username <username>
     And Enters a correct password
@@ -24,3 +24,17 @@ Feature: User can login
       | user_     |
       | tomsm     |
 
+
+  @scenario3.2
+  Scenario Outline: The user logins with invalid password <password>
+    Given The user is on the login page
+    When The user enters an invalid password <password>
+    And Enters a correct username
+    Then Clicks on login button
+    And The incorrect password message displayed is the expected
+
+    Examples:
+    | password  |
+    | pass1 |
+    | 1234  |
+    | secretpassword  |
