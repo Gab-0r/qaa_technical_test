@@ -16,9 +16,9 @@ class LoginPage:
     # Returns the entire expected message from its name
     def _get_message(self, msg_name: str):
         msgs = {
-            "correct login": self.cons.login_message,
-            "incorrect username": self.cons.incorrect_username,
-            "incorrect password": self.cons.incorrect_password
+            "correct login": self.cons.LOGIN_MESSAGE,
+            "incorrect username": self.cons.INCORRECT_USERNAME,
+            "incorrect password": self.cons.INCORRECT_PASSWORD
         }
         return msgs[msg_name]
 
