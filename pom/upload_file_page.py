@@ -10,7 +10,7 @@ class UploadFilePage:
         self.browser_interactions.open_page(url)
 
     def attach_file(self, file_root: str):
-        self.browser_interactions.input_text(locators.FILE_FIELD, file_root)
+        return self.browser_interactions.input_text(locators.FILE_FIELD, file_root)
 
     def upload_file(self):
         self.browser_interactions.click_element(locators.UPLOAD_BUTTON)

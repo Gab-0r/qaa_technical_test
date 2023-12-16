@@ -30,14 +30,13 @@ def click_login(context):
 @step("The user has logged successfully")
 def check_login(context):
     context.login_page = LoginPage(context.browser_interactions)
-    assert context.login_page.check_login(), "user cannot be logged"
+    assert_login(context.login_page.check_login())
 
 
 @step("The {msg} message displayed is the expected")
 def check_msg(context, msg: str):
     context.login_page = LoginPage(context.browser_interactions)
-    assert context.login_page.check_login_message(msg), f"{msg} message is not the expected"
-    time.sleep(3)
+    assert_message(context.login_page.check_login_message(msg), msg)
 
 
 @step("The user enters a {which} username {username}")
