@@ -1,3 +1,5 @@
+# This file is created to group the assertions and to improve the code reusability
+# reusing the messages.
 def assert_element_exist(response):
     assert response, "search failed, one or more elements were not found on the page"
 

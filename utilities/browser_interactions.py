@@ -7,6 +7,8 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
+# Unpacks the locator and convert strings to strategies. Then the function returns a tuple with the strategy
+# and the selector
 def get_locator(raw_locator: tuple) -> tuple:
     strategy, selector = raw_locator
     strategies = {"ID": By.ID, "XPATH": By.XPATH, "CSS": By.CSS_SELECTOR}
@@ -18,15 +20,18 @@ class BrowserInteractions:
         self._driver = driver
         self.time_out = time_out
 
+    # Redirects the browser to an URL
     def open_page(self, url: str):
         self._driver.get(url)
 
+    # Clicks on element from a locator in a tuple
     def click_element(self, raw_locator: tuple):
         element = WebDriverWait(self._driver, self.time_out).until(
             EC.element_to_be_clickable(get_locator(raw_locator))
         )
         element.click()
 
+    # Enters a desire string into a text field. Returns true if the field cannot be found
     def input_text(self, raw_locator: tuple, text: str) -> bool:
         try:
             element = WebDriverWait(self._driver, self.time_out).until(EC.visibility_of_element_located(
@@ -38,6 +43,7 @@ class BrowserInteractions:
             element.send_keys(text)
             return True
 
+    # Returns a list of web elements that match the locators. This list is empty if the elements not were found
     def get_elements(self, raw_locator: tuple) -> list[WebElement]:
         try:
             WebDriverWait(self._driver, self.time_out).until(
@@ -48,6 +54,7 @@ class BrowserInteractions:
         else:
             return self._driver.find_elements(*get_locator(raw_locator))
 
+    # Returns a single element. Returns none if the element cannot be found
     def get_element(self, raw_locator: tuple) -> WebElement:
         try:
             WebDriverWait(self._driver, self.time_out).until(
@@ -58,6 +65,7 @@ class BrowserInteractions:
         else:
             return self._driver.find_element(*get_locator(raw_locator))
 
+    # Returns True if the element is visible. False if not
     def element_is_visible(self, raw_locator: tuple) -> bool:
         try:
             WebDriverWait(self._driver, self.time_out).until(

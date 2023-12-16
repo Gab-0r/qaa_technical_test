@@ -2,6 +2,7 @@ from utilities.browser_interactions import BrowserInteractions
 from pom.locators.upload_file_page_locators import UploadFilePageLocators as locators
 from utilities.constants import Constants as cons
 
+
 class UploadFilePage:
     def __init__(self, browser_interactions: BrowserInteractions):
         self.browser_interactions = browser_interactions

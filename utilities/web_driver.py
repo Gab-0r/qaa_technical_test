@@ -1,6 +1,8 @@
 from selenium.webdriver import Chrome
 from selenium.webdriver import ChromeOptions
 
+
+# Class to manage the webdriver and its different options and parameters
 class WebDriverManager:
     def __init__(self, driver_mode: str):
         self.driver_mode = driver_mode
