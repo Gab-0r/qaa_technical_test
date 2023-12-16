@@ -1,4 +1,4 @@
-Feature: scenario1
+Feature: Google Search
   As a user
   I want to make a Google search
 
