@@ -6,7 +6,7 @@ class GoogleHomePage:
     def __init__(self, browser_interactions: BrowserInteractions):
         self.browser_interactions = browser_interactions
 
-    def to_home(self, url: str):
+    def to_home(self, url):
         self.browser_interactions.open_page(url)
 
     def fill_search_field(self, text: str):
