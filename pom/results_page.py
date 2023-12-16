@@ -6,6 +6,9 @@ class ResultsPage:
     def __init__(self, browser_interactions: BrowserInteractions):
         self.browser_interactions = browser_interactions
 
+    # Obtains a list of results in search results page. Then convert the text of elements and create a
+    # boolean list where True is when the element contains the word. Finally checks if all elements of boolean
+    # list are True.
     def check_results(self, results_to_check: str, word_to_search: str):
         n = int(results_to_check) + 1
         results_text = [result.text.lower() for result in
@@ -17,5 +20,6 @@ class ResultsPage:
         else:
             return False
 
+    # Clicks on the first result title to get redirected to its page
     def to_first_result(self):
         self.browser_interactions.click_element(locators.RESULTS_TITLES)

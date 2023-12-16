@@ -6,6 +6,7 @@ class FirstResultPage:
     def __init__(self, browser_interactions: BrowserInteractions):
         self.browser_interactions = browser_interactions
 
+# This function gets a the title of the first result and check if contains a word
     def title_contains(self, word: str):
         title = self.browser_interactions.get_element(locators.TITLE).text.lower()
         if title.__contains__(word.lower()):
