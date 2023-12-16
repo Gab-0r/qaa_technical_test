@@ -47,3 +47,14 @@ class BrowserInteractions:
             return []
         else:
             return self._driver.find_elements(*get_locator(raw_locator))
+
+    def get_element(self, raw_locator: tuple) -> WebElement:
+        try:
+            WebDriverWait(self._driver, self.time_out).until(
+                EC.presence_of_element_located(get_locator(raw_locator))
+            )
+        except:
+            return None
+        else:
+            return self._driver.find_element(*get_locator(raw_locator))
+
