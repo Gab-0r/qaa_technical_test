@@ -8,4 +8,3 @@ from pom.first_result_page import FirstResultPage
 def check_title(context, word: str):
     context.first_result_page = FirstResultPage(context.browser_interactions)
     assert context.first_result_page.title_contains(word), f"title does not contains the word {word}"
-    time.sleep(5)
