@@ -40,13 +40,13 @@ class LoginPage:
     def check_login(self):
         return self.browser_interactions.element_is_visible(locators.LOGOUT_BUTTON)
 
-    def enter_username(self, mode: str, username: str):
-        if mode == "correct":
+    def enter_username(self, which="correct", username=" "):
+        if which == "correct":
             self.browser_interactions.input_text(locators.USERNAME_FIELD, os.getenv("USERNAME"))
-        elif mode == "invalid":
+        elif which == "invalid":
             self.browser_interactions.input_text(locators.USERNAME_FIELD, username)
 
-    def enter_password(self, which: str, password: str):
+    def enter_password(self, which="correct", password=" "):
         if which == "correct":
             self.browser_interactions.input_text(locators.PASSWORD_FIELD, os.getenv("PASSWORD"))
         elif which == "invalid":
