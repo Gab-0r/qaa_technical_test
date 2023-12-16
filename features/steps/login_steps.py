@@ -37,3 +37,16 @@ def check_login(context):
 def check_msg(context, msg: str):
     context.login_page = LoginPage(context.browser_interactions)
     assert context.login_page.check_login_message(msg), f"{msg} message is not the expected"
+
+
+@step("The user enters a {which} username {username}")
+def input_username(context, which: str, username: str):
+    context.login_page = LoginPage(context.browser_interactions)
+    context.login_page.enter_username(which, username)
+
+
+@step("Enters a correct password")
+def input_ok_password(context):
+    context.login_page = LoginPage(context.browser_interactions)
+    context.login_page.enter_password("correct", " ")
+

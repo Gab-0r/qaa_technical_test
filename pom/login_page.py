@@ -1,6 +1,11 @@
+import os
+
 from utilities.browser_interactions import BrowserInteractions
 from pom.locators.login_page_locators import LoginPageLocators as locators
 from utilities.constants import Constants
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 class LoginPage:
@@ -34,3 +39,15 @@ class LoginPage:
 
     def check_login(self):
         return self.browser_interactions.element_is_visible(locators.LOGOUT_BUTTON)
+
+    def enter_username(self, mode: str, username: str):
+        if mode == "correct":
+            self.browser_interactions.input_text(locators.USERNAME_FIELD, os.getenv("USERNAME"))
+        elif mode == "invalid":
+            self.browser_interactions.input_text(locators.USERNAME_FIELD, username)
+
+    def enter_password(self, which: str, password: str):
+        if which == "correct":
+            self.browser_interactions.input_text(locators.PASSWORD_FIELD, os.getenv("PASSWORD"))
+        elif which == "invalid":
+            self.browser_interactions.input_text(locators.PASSWORD_FIELD, password)
