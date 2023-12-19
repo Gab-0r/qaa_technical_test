@@ -1,5 +1,3 @@
-import time
-
 from behave import step
 from pom.first_result_page import FirstResultPage
 from utilities.asserts_helper import *

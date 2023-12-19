@@ -1,5 +1,4 @@
 import os
-import time
 
 from behave import step
 from pom.upload_file_page import UploadFilePage

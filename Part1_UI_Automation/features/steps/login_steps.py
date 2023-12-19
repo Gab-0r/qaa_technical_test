@@ -1,5 +1,3 @@
-import time
-
 from behave import step
 from pom.login_page import LoginPage
 from utilities.asserts_helper import *
